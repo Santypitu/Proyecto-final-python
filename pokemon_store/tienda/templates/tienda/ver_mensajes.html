@@ -1,0 +1,31 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">Mensajes recibidos</h2>
+
+            {% if mensajes %}
+                <ul class="list-group">
+                    {% for mensaje in mensajes %}
+                        <li class="list-group-item mb-3 shadow-sm">
+                            <div class="card border-danger">
+                                <div class="card-header text-white" style="background-color: #dc3545;">
+                                    <strong>De: {{ mensaje.remitente.username }}</strong>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{ mensaje.contenido }}</p>
+                                    <small class="text-muted">Enviado: {{ mensaje.fecha_enviado }}</small>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-info text-center">No tienes mensajes.</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

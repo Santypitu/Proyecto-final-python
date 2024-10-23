@@ -1,0 +1,56 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header" style="background-color: #dc3545; color: white;">
+                    <h2 class="mb-0">Editar Perfil</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="id_email" class="font-weight-bold">Correo electrónico</label>
+                            {{ user_form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_foto_perfil" class="font-weight-bold">Foto de perfil</label>
+                            {{ profile_form.foto_perfil }}
+                        </div>
+
+                        <h3 class="mt-4">Cambiar contraseña</h3>
+                        <div class="form-group">
+                            <label for="id_old_password" class="font-weight-bold">Contraseña actual</label>
+                            {{ password_form.old_password }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_new_password1" class="font-weight-bold">Nueva contraseña</label>
+                            {{ password_form.new_password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_new_password2" class="font-weight-bold">Confirmar nueva contraseña</label>
+                            {{ password_form.new_password2 }}
+                        </div>
+
+                        <button type="submit" class="btn btn-dark btn-block mt-3">Guardar cambios</button>
+                    </form>
+                </div>
+            </div>
+
+            {% if messages %}
+            <div class="alert alert-info mt-4">
+                <ul class="mb-0">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

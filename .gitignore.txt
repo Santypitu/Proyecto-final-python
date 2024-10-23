@@ -1,0 +1,19 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de entorno virtual
+env/
+venv/
+.env
+
+# Archivos de configuración de Django
+*.sqlite3
+/media
+/staticfiles
+/static
+/logs
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db

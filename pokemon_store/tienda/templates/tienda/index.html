@@ -1,0 +1,27 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+    <h2 class="text-center my-4">Peluches disponibles</h2>
+    <div class="container">
+        <div class="row">
+            {% for peluche in peluches %}
+                <div class="col-md-4 mb-4">
+                    <div class="card border-danger text-center">
+                        <img src="{{ peluche.imagen.url }}" alt="{{ peluche.nombre }}" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ peluche.nombre }}</h3>
+                            <p class="card-text">Precio: {{ peluche.precio }}€</p>
+                            <form action="{% url 'agregar_al_carrito' peluche.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-dark">Añadir al carrito</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

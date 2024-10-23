@@ -1,0 +1,15 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Iniciar sesión</h2>
+        <form method="POST" class="border border-dark p-4 rounded">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p|safe }}
+            </div>
+            <button type="submit" class="btn btn-danger btn-block">Iniciar sesión</button>
+        </form>
+        <p class="text-center mt-3">¿No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+    </div>
+{% endblock %}
